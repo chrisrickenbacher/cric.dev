@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>cric.dev</title>
+    <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <style>
+        @font-face {
+            font-family: "Source Sans Pro";
+            src: url('SourceSans3.ttf') format('truetype-variations');
+            font-weight: 500 900;
+        }
+
+        body {
+            font-family: "Source Sans Pro", sans-serif;
+            margin: 0;
+            padding-left: 5vw;
+            padding-right: 5vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: calc(2rem + 5vw);
+            font-weight: 500;
+            margin-top: 0.2rem;
+            margin-bottom: 2rem;
+            line-height: 1em;
+        }
+
+
+        .links {
+            font-size: calc(1rem + 1vw);
+            text-transform: uppercase;
+            font-weight: 900;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 2rem 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .projects {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 2rem 2rem;
+        }
+
+        .project {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: left;
+            flex-grow: 1;
+            padding: 1.4rem;
+            max-width: 20vw;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .truncated {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .project h3 {
+            margin: 0;
+        }
+
+        @media (max-width: 800px) {
+            .projects {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .project {
+                border: 1px solid #ddd;
+                max-width: 80vw;
+            }
+        }
+
+        a:link,
+        a:visited {
+            text-decoration: none;
+            color: black;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Christian Rickenbacher</h1>
+
+        <div class="links">
+            <a
+                href="https://github.com/chrisrickenbacher"
+                target="_blank"
+            >Github</a>
+            <a
+                href="https://linkedin.com/in/rickenbacher/"
+                target="_blank"
+            >Linkedin</a>
+        </div>
+
+        <div
+            x-data="githubRepos()"
+            x-init="fetchRepos"
+            class="projects"
+        >
+            <template x-if="error">
+                <p
+                    x-text="error"
+                    style="color: red;"
+                ></p>
+            </template>
+
+            <template x-if="loading">
+                <p>Loading...</p>
+            </template>
+
+            <template
+                x-for="repo in repos"
+                :key="repo.name"
+            >
+                <div class="project">
+                    <h3><a
+                            :href="repo.html_url"
+                            x-text="repo.name"
+                            target="_blank"
+                        ></a></h3>
+                    <div
+                        class="truncated"
+                        x-text="repo.description"
+                    ></div>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <script>
+        function githubRepos() {
+            return {
+                repos: [],
+                error: '',
+                loading: true,
+
+                async fetchRepos() {
+                    const pinnedRepos = ["rhygfuehl", "nuxt-static-signage", "sheets-csv-addon"];
+                    try {
+                        const response = await fetch('https://api.github.com/users/chrisrickenbacher/repos', {
+                            method: 'GET',
+                            headers: {
+                                'Accept': 'application/vnd.github.v3+json'
+                            }
+                        });
+                        if (!response.ok) {
+                            this.error = "Error fetching projects.";
+                            return;
+                        }
+                        const data = await response.json();
+                        this.repos = data.filter(repo => pinnedRepos.includes(repo.name));
+                    } catch (error) {
+                        this.error = "Error fetching projects.";
+                    } finally {
+                        this.loading = false;
+                    }
+                }
+            };
+        }
+    </script>
+</body>
+
+</html>
