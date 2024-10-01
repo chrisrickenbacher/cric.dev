@@ -129,10 +129,7 @@
             class="projects"
         >
             <template x-if="error">
-                <p
-                    x-text="error"
-                    style="color: red;"
-                ></p>
+                <p></p>
             </template>
 
             <template x-if="loading">
@@ -181,6 +178,7 @@
                         const data = await response.json();
                         this.repos = data.filter(repo => pinnedRepos.includes(repo.name));
                     } catch (error) {
+                        console.log(error)
                         this.error = "Error fetching projects.";
                     } finally {
                         this.loading = false;
