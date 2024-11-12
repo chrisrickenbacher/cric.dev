@@ -1,0 +1,170 @@
+@font-face {
+    font-family: "Work Sans";
+    src: url('WorkSans.ttf') format('truetype-variations');
+    font-weight: 400;
+    font-display: swap;
+}
+
+body {
+    font-family: "Work Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 5vw;
+    margin: 0;
+}
+
+.logo img {
+    width: 120px;
+}
+
+.container {
+    text-align: left;
+    margin-top: 1vw;
+}
+
+h1 {
+    font-size: 3.2rem;
+    font-weight: 400;
+    margin-top: 5vw;
+    margin-bottom: 2rem;
+    line-height: 1em;
+}
+
+.links {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 1rem 1rem;
+    margin-bottom: 2rem;
+}
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem 2rem;
+}
+
+.project {
+    background-color: rgba(239, 239, 242, 0.9);
+    border-radius: 8px;
+    text-align: left;
+    flex-grow: 1;
+    padding: 1.4rem;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.truncated {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.project h3 {
+    margin: 0;
+    margin-bottom: 1vw;
+    font-size: 1.4rem;
+}
+
+.project a:hover {
+    border-bottom: 0;
+    padding-bottom: 3px;
+}
+
+
+a:link,
+a:visited {
+    text-decoration: none;
+    color: black;
+    padding-bottom: 3px;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+@media (min-width: 768px) {
+
+
+    body {
+        font-family: "Work Sans", sans-serif;
+        padding: 10vh 0 0 0;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .logo {
+        width: 38vw;
+        height: 90vh;
+        border-right: solid black;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding-right: 2vw;
+    }
+
+    .logo img {
+        width: 160px;
+    }
+
+    .container {
+        height: 90vh;
+        text-align: left;
+        padding-left: 2vw;
+        padding-right: 5vw;
+        margin: 0;
+        max-width: 520px;
+    }
+
+    h1 {
+        font-size: 4.8rem;
+        font-weight: 400;
+        margin-top: 0;
+        margin-bottom: 2rem;
+        line-height: 1em;
+    }
+
+    .links {
+        font-size: 1.1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        gap: 1rem 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .projects {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .project {
+        background-color: rgba(239, 239, 242, 0.9);
+        width: 38vw;
+    }
+
+    .project h3 {
+        font-size: 1.1rem;
+    }
+
+    a:link,
+    a:visited {
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover {
+        text-decoration: none;
+        border-bottom: 1px solid black;
+        padding-bottom: 2px;
+        color: black;
+    }
+
+}
