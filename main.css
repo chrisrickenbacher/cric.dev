@@ -5,6 +5,10 @@
     font-display: swap;
 }
 
+:root {
+    --bg-gray: rgba(239, 239, 242, 0.9);
+}
+
 body {
     font-family: "Work Sans", sans-serif;
     display: flex;
@@ -50,7 +54,7 @@ h1 {
 }
 
 .project {
-    background-color: rgba(239, 239, 242, 0.9);
+    background-color: var(--bg-gray);
     border-radius: 8px;
     text-align: left;
     flex-grow: 1;
@@ -146,7 +150,7 @@ a:hover {
     }
 
     .project {
-        background-color: rgba(239, 239, 242, 0.9);
+        background-color: var(--bg-gray);
         width: 38vw;
     }
 
