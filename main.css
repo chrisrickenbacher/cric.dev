@@ -6,169 +6,116 @@
 }
 
 :root {
-    --bg-gray: rgba(239, 239, 242, 0.9);
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --main-link-bg-color: #f0f0f0;
+    --main-link-hover-bg-color: #e0e0e0;
+    --project-link-border-color: #e0e0e0;
+    --project-link-hover-bg-color: #f9f9f9;
 }
 
 body {
     font-family: "Work Sans", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
-    flex-direction: column;
-    justify-content: left;
-    padding: 5vw;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
     margin: 0;
-}
-
-.logo img {
-    width: 120px;
+    box-sizing: border-box;
 }
 
 .container {
-    text-align: left;
-    margin-top: 1vw;
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+}
+
+.logo-container {
+    margin-bottom: 2rem;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--text-color);
+    padding: 1.5rem;
+    border-radius: 8px;
 }
 
 h1 {
-    font-size: 3.2rem;
-    font-weight: 400;
-    margin-top: 5vw;
+    font-size: 1.5rem;
+    font-weight: 600;
     margin-bottom: 2rem;
-    line-height: 1em;
 }
 
 .links {
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    font-weight: 400;
     display: flex;
     flex-direction: column;
-    justify-content: left;
-    gap: 1rem 1rem;
-    margin-bottom: 2rem;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.links a {
+    background-color: var(--main-link-bg-color);
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    display: block;
+    font-weight: 500;
+}
+
+.links a:hover {
+    background-color: var(--main-link-hover-bg-color);
 }
 
 .projects {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 2rem 2rem;
+    gap: 1rem;
 }
 
-.project {
-    background-color: var(--bg-gray);
+.project-link {
+    background-color: transparent;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 1rem;
     border-radius: 8px;
-    text-align: left;
-    flex-grow: 1;
-    padding: 1.4rem;
-    max-width: 100%;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    border: 1px solid var(--project-link-border-color);
+    transition: background-color 0.3s ease;
+    display: block;
 }
 
-.truncated {
+.project-link:hover {
+    background-color: var(--project-link-hover-bg-color);
+}
+
+
+.project-link h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.project-link p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.project h3 {
-    margin: 0;
-    margin-bottom: 1vw;
-    font-size: 1.4rem;
-}
-
-.project a:hover {
-    border-bottom: 0;
-    padding-bottom: 3px;
-}
-
-
-a:link,
-a:visited {
-    text-decoration: none;
-    color: black;
-    padding-bottom: 3px;
-}
-
-a:hover {
-    text-decoration: none;
-    color: black;
-}
-
 @media (min-width: 768px) {
-
-
     body {
-        font-family: "Work Sans", sans-serif;
-        padding: 10vh 0 0 0;
-        display: flex;
-        flex-direction: row;
-    }
-
-    .logo {
-        width: 38vw;
-        height: 90vh;
-        border-right: solid black;
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-end;
-        padding-right: 2vw;
-    }
-
-    .logo img {
-        width: 160px;
-    }
-
-    .container {
-        height: 90vh;
-        text-align: left;
-        padding-left: 2vw;
-        padding-right: 5vw;
-        margin: 0;
-        max-width: 520px;
+        padding: 4rem;
     }
 
     h1 {
-        font-size: 4.8rem;
-        font-weight: 400;
-        margin-top: 0;
-        margin-bottom: 2rem;
-        line-height: 1em;
+        font-size: 2rem;
     }
-
-    .links {
-        font-size: 1.1rem;
-        display: flex;
-        flex-direction: row;
-        justify-content: left;
-        gap: 1rem 1rem;
-        margin-bottom: 2rem;
-    }
-
-    .projects {
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .project {
-        background-color: var(--bg-gray);
-        width: 38vw;
-    }
-
-    .project h3 {
-        font-size: 1.1rem;
-    }
-
-    a:link,
-    a:visited {
-        text-decoration: none;
-        color: black;
-    }
-
-    a:hover {
-        text-decoration: none;
-        border-bottom: 1px solid black;
-        padding-bottom: 2px;
-        color: black;
-    }
-
 }

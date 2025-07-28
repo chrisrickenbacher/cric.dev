@@ -3,77 +3,41 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cric.dev</title>
-    <script
-        defer
-        src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
-    <link
-        rel="stylesheet"
-        href="main.css"
-    >
-    <link
-        rel="icon"
-        href="/icon.svg"
-        type="image/svg+xml"
-    >
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
 </head>
 
 <body>
-    <div class="logo"><img
-            src="icon.svg"
-            alt="logo"
-        /></div>
     <div class="container">
+        <div class="logo-container">
+            <img src="icon.svg" alt="logo" class="logo" />
+        </div>
+
         <h1>Christian Rickenbacher</h1>
 
         <div class="links">
-            <a
-                href="https://github.com/chrisrickenbacher"
-                target="_blank"
-            >Github</a>
-            <a
-                href="https://linkedin.com/in/rickenbacher/"
-                target="_blank"
-            >Linkedin</a>
-            <a
-                href="https://bridg.ch"
-                target="_blank"
-            >Bridg</a>
+            <a href="https://github.com/chrisrickenbacher" target="_blank">Github</a>
+            <a href="https://linkedin.com/in/rickenbacher/" target="_blank">Linkedin</a>
+            <a href="https://bridg.ch" target="_blank">Bridg</a>
         </div>
 
-        <div
-            x-data="githubRepos()"
-            x-init="fetchRepos"
-            class="projects"
-        >
+        <div x-data="githubRepos()" x-init="fetchRepos" class="projects">
             <template x-if="error">
-                <p></p>
+                <p x-text="error"></p>
             </template>
 
             <template x-if="loading">
-                <p>Loading...</p>
+                <p>Loading projects...</p>
             </template>
 
-            <template
-                x-for="repo in repos"
-                :key="repo.name"
-            >
-                <div class="project">
-                    <h3><a
-                            :href="repo.html_url"
-                            x-text="repo.name"
-                            target="_blank"
-                        ></a></h3>
-                    <div
-                        class="truncated"
-                        x-text="repo.description"
-                    ></div>
-                </div>
+            <template x-for="repo in repos" :key="repo.name">
+                <a :href="repo.html_url" class="project-link" target="_blank">
+                    <h3 x-text="repo.name"></h3>
+                    <p x-text="repo.description"></p>
+                </a>
             </template>
         </div>
     </div>
